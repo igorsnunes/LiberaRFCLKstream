@@ -1,0 +1,134 @@
+record(bo, "LRFCLK:RESET")
+{
+	field(DTYP, "stream")
+	field(OUT, "@RFCLK.proto reset NC ")
+}
+
+record(stringin, "LRFCLK:RF:getFREQ")
+{
+	field(DTYP, "stream")
+	field(INP, "@RFCLK.proto rf_frequency_read NC ")
+	field(SCAN, "2 second")
+	field(PINI,"YES")
+
+}
+record(stringout, "LRFCLK:RF:setFREQ")
+{
+	field(DTYP, "stream")
+	field(OUT, "@RFCLK.proto rf_frequency_write NC ")
+}
+
+record(stringin, "LRFCLK:RF:getMCFREQ")
+{
+	field(DTYP, "stream")
+	field(INP, "@RFCLK.proto mc_frequency_read NC ")
+	field(SCAN, "2 second")
+	field(PINI, "YES")
+}
+record(stringout, "LRFCLK:RF:setMCFREQ")
+{
+	field(DTYP, "stream")
+	field(OUT, "@RFCLK.proto mc_frequency_write NC ")
+
+}
+record(stringin, "LRFCLK:RF:getPOW")
+{
+	field(DTYP, "stream")
+	field(INP, "@RFCLK.proto pow_rf_read NC ")
+	field(SCAN, "2 second")
+	field(PINI, "YES")
+}
+record(stringout, "LRFCLK:RF:setPOW")
+{
+	field(DTYP, "stream")
+	field(OUT, "@RFCLK.proto pow_rf_write NC ")
+
+}
+record(stringin, "LRFCLK:RF:getHARMONICNUM")
+{
+	field(DTYP, "stream")
+	field(INP, "@RFCLK.proto rf_h_par_read NC ")
+	field(SCAN, "2 second")
+	field(PINI, "YES")
+}
+record(stringout, "LRFCLK:RF:setHARMONICNUM")
+{
+	field(DTYP, "stream")
+	field(OUT, "@RFCLK.proto rf_h_par_write NC ")
+
+}
+
+record(stringin, "LRFCLK:RF:getGATE")
+{
+	field(DTYP, "stream")
+	field(INP, "@RFCLK.proto gate_read NC ")
+	field(SCAN, "2 second")
+	field(PINI, "YES")
+}
+record(stringout, "LRFCLK:RF:setGATE")
+{
+	field(DTYP, "stream")
+	field(OUT, "@RFCLK.proto gate_write NC ")
+
+}
+
+record(stringin, "LRFCLK:GATE:getMODE")
+{
+	field(DTYP, "stream")
+	field(INP, "@RFCLK.proto gate_mode_read NC ")
+	field(SCAN, "2 second")
+	field(PINI, "YES")
+}
+record(stringout, "LRFCLK:GATE:setMODE")
+{
+	field(DTYP, "stream")
+	field(OUT, "@RFCLK.proto gate_mode_write NC ")
+
+}
+
+record(stringin, "LRFCLK:GATE:getFILL")
+{
+	field(DTYP, "stream")
+	field(INP, "@RFCLK.proto gate_fill_read NC ")
+	field(SCAN, "2 second")
+	field(PINI, "YES")
+}
+record(stringout, "LRFCLK:GATE:setFILL")
+{
+	field(DTYP, "stream")
+	field(OUT, "@RFCLK.proto gate_fill_write NC ")
+
+}
+
+record(stringin, "LRFCLK:GATE:getPATT")
+{
+	field(DTYP, "stream")
+	field(INP, "@RFCLK.proto gate_patt_read NC ")
+	field(SCAN, "2 second")
+	field(PINI, "YES")
+}
+record(stringout, "LRFCLK:GATE:setPATT")
+{
+	field(DTYP, "stream")
+	field(OUT, "@RFCLK.proto gate_patt_write NC ")
+
+}
+record(stringin, "LRFCLK:CONFIG:getOUTS")
+{
+	field(DTYP, "stream")
+	field(INP, "@RFCLK.proto config_outs_read NC ")
+	field(SCAN, "2 second")
+	field(PINI, "YES")
+}
+record(stringout, "LRFCLK:CONFIG:setOUTS")
+{
+	field(DTYP, "stream")
+	field(OUT, "@RFCLK.proto config_outs_write NC ")
+
+}
+record(stringin, "LRFCLK:ID")
+{
+    field(DTYP, "stream")
+    field(INP,  "@RFCLK.proto identification NC")
+    field(PINI, "YES")
+}

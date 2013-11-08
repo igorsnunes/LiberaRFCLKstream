@@ -1,0 +1,19 @@
+Terminator = ;
+InTerminator = ;
+OutTerminator = ;
+ReplyTimeout = 100;
+ReadTimeout = 100;
+
+leitura
+{
+   #$1 = address, $2 = size, $3 = id
+   out $1 0 0x10 0x01 $3 "%<nsum>";   
+   in 0x0 $1 0x11 $2 "%\$2r%<nsum>";   
+}
+
+escrita
+{
+	#$1 = address, $2 = size, $3 = id
+	out $1 0x0 0x20 $2 $3 "%3u%<nsum>";
+	in 0x0 $1 0xE0 0x0 "%<nsum>";
+}

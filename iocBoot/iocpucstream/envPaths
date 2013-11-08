@@ -1,0 +1,6 @@
+epicsEnvSet("ARCH","linux-x86_64")
+epicsEnvSet("IOC","iocpucstream")
+epicsEnvSet("TOP","/home/igor/LiberaRFCLKstream")
+epicsEnvSet("EPICS_BASE","/home/igor/epics/base")
+epicsEnvSet("ASYN","/home/igor/asyn/asyn4-18")
+epicsEnvSet("STREAM","/home/igor/LiberaRFCLKstream/StreamDevice-2-4")

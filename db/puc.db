@@ -1,0 +1,20 @@
+#record(ai, "teste")
+#{
+#   field(DTYP, "stream")
+#   field(INP, "@puc.proto leitura(5,3,2) NC")
+#   field(SCAN, "1 second")
+#   field(PREC, "5")
+#   field(EGUF, "10.0")
+#   field(EGUL, "-10.0")
+#
+#}
+
+record(ao, "testeao")
+{
+	field(DTYP, "stream")
+	field(OUT, "@puc.proto escrita(5,4,2) NC")
+	field(SCAN, "Passive")
+	field(PREC, "5")
+	field(EGUF, "10.0")
+	field(EGUL, "-10.0")
+}

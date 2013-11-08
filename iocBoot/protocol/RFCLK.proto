@@ -1,0 +1,149 @@
+OutTerminator = CR LF;
+InTerminator = CR;
+Terminator = "";
+ReplyTimeout = 5000;
+ReadTimeout = 5000;
+
+
+reset
+{
+	out "*RST";
+	in LF "OK";
+}
+identification
+{
+	out "*IDN?";
+	#in " %[^\n]s" CR LF "OK";
+	in "*%[ a-zA-Z0-9]";
+	ExtraInput = Ignore;
+}
+
+oscilator_ref
+{
+	out "ROSC:SOUR?";
+	in "%f";
+}
+
+gate_write
+{
+	out "GATE %s";
+	ExtraInput = Ignore;
+}
+gate_read
+{
+	out "GATE?";
+	in "GATE" "%[ 0-9]";
+	ExtraInput = Ignore;
+	ReplyTimeout = 5000;
+}
+gate_mode_write
+{
+	out "GATE:MODE %s";
+	ExtraInput = Ignore;
+}
+gate_mode_read
+{
+	out "GATE:MODE?";
+	in "GATE:MODE " "%[GATE|PATTERN]";
+	ExtraInput = Ignore;
+	ReplyTimeout = 5000;
+}
+gate_fill_write
+{
+	out "GATE:FILL %s";
+	ExtraInput = Ignore;
+}
+gate_fill_read
+{
+	out "GATE:FILL?";
+	in "GATE:FILL " "%[0-9]";
+	ExtraInput = Ignore;
+	ReplyTimeout = 5000;
+}
+
+gate_patt_write
+{
+	out "GATE:PATT %s";
+	ExtraInput = Ignore;
+}
+gate_patt_read
+{
+	out "GATE:PATT?";
+	in "GATE:PATT " "%[1-4]";
+	ExtraInput = Ignore;
+	ReplyTimeout = 5000;
+}
+
+rf_frequency_write
+{
+	out "FREQ:RF %s";
+	ExtraInput = Ignore;
+}
+rf_frequency_read
+{
+	out "FREQ:RF?";
+	in "FREQ:RF" "%[ 0-9,]";
+	ExtraInput = Ignore;
+	ReplyTimeout = 5000;
+}
+mc_frequency_write
+{
+	out "FREQ:MC %s";
+	ExtraInput = Ignore;
+}
+mc_frequency_read
+{
+	out "FREQ:MC?";
+	in "FREQ:MC" "%[ 0-9,]";
+	ExtraInput = Ignore;
+	ReplyTimeout = 5000;
+}
+rf_h_par_write
+{
+	out "PAR:H %s";
+}
+rf_h_par_read
+{
+	out "PAR:H?";
+	in "PAR:H" "%[ 0-9]";
+	ExtraInput = Ignore;
+	ReplyTimeout = 5000;
+}
+pow_rf_write
+{	out "POW:RF %s";
+	ExtraInput = Ignore;
+
+}
+pow_rf_read
+{
+	out "POW:RF?";
+	in "POW:RF" "%[ -0-9,]";
+	ExtraInput = Ignore;
+	ReplyTimeout = 5000;
+}
+
+config_outs_write
+{	out "OUTS:REF %s";
+	ExtraInput = Ignore;
+
+}
+config_outs_read
+{
+	out "OUTS:REF?";
+	in "OUTS:REF " "%[GATE|1MHz|10MHz]";
+	ExtraInput = Ignore;
+	ReplyTimeout = 5000;
+}
+
+read{
+   #$1 = address, $2 = size, $3 = id
+   out $1 0 0x10 0x01 $3 "%<nsum>";   
+   in 0x0 $1 0x11 $2 "%\$2r%<nsum>";   
+}
+
+write
+{
+	#$1 = address, $2 = size, $3 = id
+	out $1 0x0 0x20 $2 $3 "%.3r%<nsum>";
+	in 0x0 $1 0xE0 0x0 "%<nsum>";
+}
